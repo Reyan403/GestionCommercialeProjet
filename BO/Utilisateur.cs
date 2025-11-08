@@ -18,7 +18,14 @@ namespace BO
             this.nom_utilisateur = nom_utilisateur;
             this.mot_de_passe_utilisateur = mot_de_passe_utilisateur;
         }
-        
+
+        public Utilisateur(int id_utilisateur, string nom_utilisateur, string mot_de_passe_utilisateur)
+        {
+            this.id_utilisateur = id_utilisateur;
+            this.nom_utilisateur = nom_utilisateur;
+            this.mot_de_passe_utilisateur = mot_de_passe_utilisateur;
+        }
+
         public int getId_utilisateur()
         {
             return id_utilisateur;
