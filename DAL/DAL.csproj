@@ -51,10 +51,6 @@
       <Project>{8a506880-3c49-4b21-be58-51c888309e98}</Project>
       <Name>BO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GUI\GUI.csproj">
-      <Project>{52e2cabf-04b1-4d69-abc4-069d0e2a1c2c}</Project>
-      <Name>GUI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

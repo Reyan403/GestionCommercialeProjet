@@ -54,10 +54,6 @@
       <Project>{e5c316a0-1301-4e79-9218-25f83049f537}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GUI\GUI.csproj">
-      <Project>{52e2cabf-04b1-4d69-abc4-069d0e2a1c2c}</Project>
-      <Name>GUI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

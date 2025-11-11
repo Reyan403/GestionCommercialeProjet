@@ -17,11 +17,11 @@ namespace BLL
             return uneGestionProduits;
         }
 
-        public static void SetchaineConnexion(ConnectionStringSettings chset)
+        public static void SetchaineConnexion(string chaine)
         {
-            string chaine = chset.ConnectionString;
             ConnexionBD.GetConnexionBD().SetchaineConnexion(chaine);
         }
+
 
         public static List<ProduitBO> GetProduits()
         {

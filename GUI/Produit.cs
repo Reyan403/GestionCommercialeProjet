@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
+using BLL;
+using BO;
+using System.Configuration;
+
 
 namespace GUI
 {
@@ -20,22 +24,37 @@ namespace GUI
 
         private void Produit_Load(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
+            try
             {
-                dataGridView1.Rows.Add(1, "Câble RJ45 Cat6 5m", "réseau", "14.99 €");
-                dataGridView1.Rows.Add(2, "Routeur Wi-Fi TP-Link AX1800", "réseau", "92.50 €");
-                dataGridView1.Rows.Add(3, "Switch réseau Netgear 8 ports", "réseau", "59.90 €");
-                dataGridView1.Rows.Add(4, "Câble fibre optique SC-SC 3m", "réseau", "24.75 €");
-                dataGridView1.Rows.Add(5, "Carte réseau PCIe Gigabit", "réseau", "36.40 €");
-            }
+                // 🔗 Étape 1 : établir la connexion à la base via la BLL
+                string chaine = ConfigurationManager.ConnectionStrings["gestion_commerciale"].ConnectionString;
+                GestionProduits.SetchaineConnexion(chaine);
 
-            if (dataGridView1.Rows.Count > 0)
+                // 📦 Étape 2 : récupérer la liste des produits depuis la BLL
+                List<ProduitBO> lesProduits = GestionProduits.GetProduits();
+
+                // 💡 Étape 3 : afficher dans le DataGridView
+                dataGridView1.Rows.Clear();
+
+                foreach (var p in lesProduits)
+                {
+                    dataGridView1.Rows.Add(p.getCode(), p.getLibelle(), p.getCategorie(), $"{p.getPrix()} €");
+                }
+
+                // Sélection automatique de la première ligne
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[0].Selected = true;
+                    dataGridView1_SelectionChanged(this, EventArgs.Empty);
+                }
+            }
+            catch (Exception ex)
             {
-                dataGridView1.ClearSelection();
-                dataGridView1.Rows[0].Selected = true;
-                dataGridView1_SelectionChanged(this, EventArgs.Empty);
+                MessageBox.Show($"Erreur lors du chargement des produits : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void addProduct_Click(object sender, EventArgs e)
         {
