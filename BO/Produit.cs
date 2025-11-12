@@ -10,12 +10,12 @@ namespace BO
     {
         public int IdProduit { get; set; }
         public string LibelleProduit { get; set; }
-        public double PrixVenteHTProduit { get; set; }
+        public float PrixVenteHTProduit { get; set; }
         public int IdCategorie { get; set; }
 
         public Produit() { }
 
-        public Produit(int idProduit, string libelleProduit, double prixVenteHTProduit, int idCategorie)
+        public Produit(int idProduit, string libelleProduit, float prixVenteHTProduit, int idCategorie)
         {
             IdProduit = idProduit;
             LibelleProduit = libelleProduit;
