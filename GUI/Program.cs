@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace GUI
 {
@@ -16,7 +18,11 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Produit()); 
+            Application.Run(new Form1());
+
+            SqlConnection maConnection = new SqlConnection(
+    "Server=localhost;Database=gestion_commerciale;Trusted_Connection=True;Persist Security Info=False;");
+
         }
     }
 }
