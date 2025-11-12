@@ -25,7 +25,7 @@ namespace BLL
 
         public static List<ProduitBO> GetProduits()
         {
-            return Prod6uitDAO.GetProduits();
+            return ProduitDAO.GetProduits();
         }
 
         public static int ModifierProduit(ProduitBO p)
